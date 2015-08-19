@@ -45,7 +45,7 @@ function sendMessageRequest(message) {
 			setReceivedMessage(xmlhttp.responseText);
 		} else {}
 	}
-	xmlhttp.open("GET", "http://www.devislee.com/server.php?message=" + message + "&userId=" + userId, true);
+	xmlhttp.open("GET", "http://www.catandroid.com/server.php?message=" + message + "&userId=" + userId, true);
 	xmlhttp.send();
 
 }
