@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>小花猫</title>
+		<link rel="icon" type="image/PNG" href="cat_0.png" />
+		<link rel="shortcut icon" href="cat_0.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="full-screen" content="yes" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="x5-fullscreen" content="true" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="apple-touch-icon-precomposed" href="http://www.devislee.com/cat_0.png">
+
+		<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="css/app.min.css">
+		<link rel="stylesheet" type="text/css" href="css/inputDiv.css" />
+	</head>
+
+	<body onload="onPageInit()" onkeydown="onKeyDown()">
+		<!--浮层-->
+		<div id="homePage" class="app-page app-android" data-page="home">
+			<div class="app-topbar blue">
+				<div class="app-title"><span class="app-icon"></span>小花猫</div>
+				<div class="right app-button app-menu"></div>
+			</div>
+			<div class="app-content" style="background-color: #66ccff;">
+				<!--<div id="sunny"></div>
+
+				<div id="floatdiv" style="left: -50;top: 100;">
+					<img src="img/cloud4.png" height="38" width="auto">
+				</div>
+
+				<div id="cloudDiv" style="top: 100;">
+					<marquee behavior="alternate" scrollamount="1.13">
+						<img class="cloudImg" src="img/cloud2.png" alt="" width="55" height="auto" />
+					</marquee>
+				</div>-->
+				<!--内容-->
+				<div id="contentDiv">
+					<ul class="chat-thread" id="chatContent">
+						<li class="you">嗨！主人您好，我是小花猫! </li>
+					</ul>
+					<div id="chatContentFootDiv"> </div>
+					<div style="clear: both;"> </div>
+				</div>
+
+				<div id="inputDiv">
+					<input id="inputText" class="app-input " name="subject" placeholder="请输入要说的话…">
+					<div class="app-button green corner_button" id="sendButton" onclick="sendMessage()">OK</div>
+					<div style="clear: both;height: 0px;"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="app-page app-ios-7" data-page="identify">
+			<div class="app-topbar blue">
+				<div class="left app-button" data-back data-autotitle>
+				</div>
+				<div class="app-title">
+					算命大师
+				</div>
+				<div class="right app-button app-menu">帮助</div>
+			</div>
+			<div class="app-content">
+				<div class="app-section">
+					<h5>
+						算命大师功能正在开发中……</br>即将上线！敬请期待！
+					</h5>
+				</div>
+
+				<div class="app-section" style="text-align: left;">
+					<h5>请选取一张您的照片</h5>
+					<input id="fileInput" type="file" onchange="getPic()">
+					</input>
+				</div>
+				<script>
+					function getPic() {
+						alert('213');
+						document.getElementById('image').src = this.value;
+					}
+				</script>
+				<div class="app-section" style="text-align: center;">
+					<img id="image" src="cat_0.png" alt="暂不支持" />
+				</div>
+				<div class="app-section">
+					<div class="app-button green" id="identifyButton" onclick="alert('识别功能尚未完成')">
+						算一卦
+					</div>
+				</div>
+				<!--<div class="app-section">
+					<h3 id="resultText">
+						识别结果：
+					</h3>
+					<input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this)">
+					<div id="fileList" style="width:200px;height:200px;">
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script type="text/javascript " src="js/app.min.js "></script>
+		<script type="text/javascript " src="js/chat.js "></script>
+		<script type="text/javascript " src="js/WeixinApi.js "></script>
+		<script type="text/javascript" src="js/touch.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+		<script type="text/javascript" src="js/identify.js"></script>
+		<script type="text/javascript" src="js/shake.js"></script>
+		<script>
+			 //页面初始化
+			App.controller('home', function(page) {
+				//				if (App.platform === 'ios') {
+				//					this.transition = 'slideon-down';
+				//				}
+				$(page).on('appLayout', function() {
+					//					onPageInit();
+				});
+				$(page).find('.app-menu')
+					.on('click', function() {
+						App.dialog({
+							title: "欢迎常来和小花猫一起聊天！喵~",
+							text: "我还有很多隐藏功能哦！~O(∩_∩)O~",
+							okButton: '算命大师',
+							cancelButton: '取消'
+						}, function(choice) {
+							console.log(choice);
+							if (choice == 'ok') {
+								App.load('identify');
+								//alert('请点击右上角微信菜单，把我分享到朋友圈吧！喵~ ^ω^');
+							}  
+						});
+					});
+			});
+			App.controller('identify', function(page) {});
+			App.enableDragTransition();
+			try {
+				App.restore();
+			} catch (err) {
+				App.load('home');
+			}
+
+			window.wxData = {
+				"appId": "",
+				"imgUrl": 'http://www.devislee.com/cat_0.png',
+				"link": 'http://www.devislee.com/',
+				"desc": "卖萌、装逼、耍赖、搞基…… 这些我真的都不会哦！喵~",
+				"title": "小花猫—智能聊天机器人"
+			};
+			window.wxFriend = {
+				"appId": "",
+				"imgUrl": 'http://www.devislee.com/cat_0.png',
+				"link": 'http://www.devislee.com/',
+				"desc": "卖萌、装逼、耍赖、搞基…… 这些我真的都不会哦！喵~",
+				"title": "小花猫—智能聊天机器人"
+			};
+			window.wxData.desc = "小花猫—智能聊天";
+			window.wxFriend.desc = "卖萌、装逼、耍赖、搞基…… 这些我真的都不会哦！喵~";
+			WeixinApi.ready(function(Api) {
+				var wxCallbacks = {
+					ready: function() {},
+					cancel: function(resp) {},
+					fail: function(resp) {},
+					confirm: function(resp) {},
+					all: function(resp) {}
+				};
+				Api.shareToFriend(wxFriend, wxCallbacks);
+				Api.shareToTimeline(wxData, wxCallbacks);
+				Api.shareToWeibo(wxData, wxCallbacks);
+			});
+		</script>
+
+		<div style="display: none;">
+			<script type="text/javascript">
+				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7409296fd4cad2d7cb5f7b93d451b43b' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</div>
+	</body>
+
+</html>

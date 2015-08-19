@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>微信红包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<style type="text/css">
+			body {
+				background-color: #232323;
+			}
+			#backgroundDiv {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				background: url(img/bonus_bg.png) no-repeat;
+				background-size: 100%;
+			}
+			#cat {
+				position: absolute;
+				top: 15%;
+				left: 35%;
+				width: 80px;
+				height: auto;
+			}
+			#cat_1 {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 80px;
+				height: auto;
+			}
+			#text1 {
+				position: absolute;
+				top: 28%;
+				width: 100%;
+				text-align: center;
+				height: auto;
+				color: white;
+			}
+			#catButton {
+				position: absolute;
+				bottom: 10%;
+				width: 50%;
+				left: 25%;
+				text-align: center;
+				border-radius: 10px;
+				border: 0px;
+				height: auto;
+				color: black;
+				padding: 15px;
+				font-size: 16px;
+				background-color: yellow;
+			}
+			#clause {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				text-align: center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id='backgroundDiv'>
+			<img id='cat' src="img/cat_3.png" />
+			<h4 id='text1'>
+				<span style="font-size: 18px;" >恭喜你！</span>成功被我"忽悠"进来了哈！
+			</br>
+				<span style="color:lightgreen" >-----------友情提示-----------</span>
+			</br>
+				有一大波<span style="font-size: 18px;" >"节日"</span>正在逼近……
+			</br>
+				所以,请警惕微信红包诈骗等陷阱！
+			</br>
+			</br>
+				当然，我这不算诈骗哦，嘿嘿！
+			</br>
+				只是想邀请你来和小花猫聊聊天！
+			</br>
+				╮(╯▽╰)╭
+			</br>
+			</h4>
+			<button id='catButton' onclick="gotoCat()">去和小花猫聊天</button>
+			<h5 id='clause' onclick="alert('本页面纯属娱乐，绝无任何侵犯用户权益的操作，最终解释权归小花猫所有。')">免责申明</h5>
+			<img id='cat_1' src="img/cat_0.png" />
+		</div>
+
+		<script type="text/javascript" src="js/WeixinApi.js"></script>
+		<script type="text/javascript">
+			function gotoCat() {
+				location.href = 'http://www.devislee.com/LittleCat/';
+			}
+		</script>
+		<script>
+			window.wxData = {
+				"appId": "",
+				"imgUrl": 'http://www.devislee.com/LittleCat/img/bonus_icon.png',
+				"link": 'http://www.devislee.com/LittleCat/hongbao.html',
+				"desc": "我给你发了一个红包，赶紧去拆！祝：节日快乐！",
+				"title": "微信红包"
+			};
+			window.wxFriend = {
+				"appId": "",
+				"imgUrl": 'http://www.devislee.com/LittleCat/img/bonus_icon.png',
+				"link": 'http://www.devislee.com/LittleCat/hongbao.html',
+				"desc": "我给你发了一个红包，赶紧去拆！祝：节日快乐！",
+				"title": "微信红包"
+			};
+
+			window.wxData.desc = "微信红包";
+			window.wxFriend.desc = "我给你发了一个红包，赶紧去拆！祝：节日快乐！";
+
+			WeixinApi.ready(function(Api) {
+				var wxCallbacks = {
+					ready: function() {},
+					cancel: function(resp) {},
+					fail: function(resp) {},
+					confirm: function(resp) {},
+					all: function(resp) {}
+				};
+				Api.shareToFriend(wxFriend, wxCallbacks);
+				Api.shareToTimeline(wxData, wxCallbacks);
+				Api.shareToWeibo(wxData, wxCallbacks);
+			});
+		</script>
+	</body>
+
+</html>

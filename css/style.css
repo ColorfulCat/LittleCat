@@ -1,0 +1,317 @@
+body {
+	padding: 0;
+	margin: 0;
+	/*background: -moz-linear-gradient(-45deg, #6cc5fa 0, #6cc5fa 100%);
+	background: -webkit-linear-gradient(-45deg, #6cc5fa 0, #6cc5fa 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;*/
+	
+	background-color: #66ccff;
+}
+::-webkit-scrollbar {
+	width: 0px;
+}
+::-webkit-scrollbar-track {
+	border-radius: 0px;
+	background-color: rgba(25, 147, 147, 0.1);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 0px;
+	background-color: rgba(25, 147, 147, 0.2);
+}
+.chat-thread {
+	margin: 0px auto 0 auto;
+	padding: 0 0 0 0;
+	list-style: none;
+}
+/*content*/
+
+.chat-thread li.you {
+	position: relative;
+	text-shadow: 0px 0px 0px white;
+	clear: both;
+	display: inline-block;
+	padding: 10px 10px 10px 10px;
+	margin: 0px 0 10px 0;
+	font: 13px/15px 'Noto Sans', sans-serif;
+	border-radius: 5px;
+	-webkit-box-shadow: 3px 3px 3px #666666;
+	-moz-box-shadow: 3px 3px 3px #666666;
+	box-shadow: 3px 3px 3px #666666;
+}
+.chat-thread li.me {
+	position: relative;
+	text-shadow: 0px 0px 0px transparent;
+	clear: both;
+	display: inline-block;
+	padding: 10px 10px 10px 10px;
+	margin: 0px 0 10px 0;
+	font: 13px/15px 'Noto Sans', sans-serif;
+	border-radius: 5px;
+	-webkit-box-shadow: -3px 3px 3px #666666;
+	-moz-box-shadow: -3px 3px 3px #666666;
+	box-shadow: -3px 3px 3px #666666;
+}
+/*@keyframes left_in {
+	from {
+		left: -200px;
+	}
+	to {
+		left: 0px;
+	}
+}*/
+
+@-webkit-keyframes left_in
+/*Safari and Chrome*/
+
+{
+	/*0% {
+		left: -200px;
+	}
+	60% {
+		left: 0px;
+	}
+	80% {
+		left: 30px;
+	}
+	100% {
+		left: 0px;
+	}*/
+	
+	from {
+		left: -200px;
+	}
+	to {
+		left: 0px;
+	}
+}
+/*@keyframes right_in {
+	from {
+		right: -200px;
+	}
+	to {
+		right: 0px;
+	}
+}*/
+
+@-webkit-keyframes right_in
+/*Safari and Chrome*/
+
+{
+	from {
+		right: -200px;
+	}
+	to {
+		right: 0px;
+	}
+}
+/*我的背景色*/
+
+.chat-thread li.me {
+	background-color: #2ecc71;
+	/*animation: right_in 0.5s 1;*/
+	/*-webkit-animation: right_in 0.5s 1;*/
+	/*-webkit-animation-name: 'wobble';
+	/*动画属性名，也就是我们前面keyframes定义的动画名*/
+	/*-webkit-animation-duration: 10s;*/
+	/*动画持续时间*/
+	/*-webkit-animation-timing-function: ease-in-out;*/
+	/*动画频率，和transition-timing-function是一样的*/
+	/*-webkit-animation-delay: 2s;*/
+	/*动画延迟时间*/
+	/*-webkit-animation-iteration-count: 10;*/
+	/*定义循环资料，infinite为无限次*/
+	/*-webkit-animation-direction: alternate;*/
+	/*定义动画方式*/
+	
+	*/
+}
+/*你的背景色*/
+
+.chat-thread li.you {
+	background-color: #4486f0;
+	/*animation: left_in 0.5s 1;*/
+	/*-webkit-animation: left_in 0.5s 1;*/
+}
+/* Chat - Avatar */
+
+.chat-thread li:before {
+	position: absolute;
+	top: 0;
+	margin-left: -65px;
+	width: 40px;
+	height: 40px;
+	/*	border-radius: 10px;*/
+	
+	content: '';
+}
+/* Chat - Avatar */
+/*.chat-thread li:before { 
+	position: absolute;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	content: '';
+}*/
+/* Chat - Speech Bubble Arrow */
+
+.chat-thread li:after {
+	position: absolute;
+	top: 10px;
+	content: '';
+	width: 0;
+	height: 0;
+}
+.chat-thread li.me {
+	float: right;
+	margin-right: 20px;
+	color: #ffffff;
+	margin-left: 60px;
+	/*我的字体颜色*/
+}
+.chat-thread li.me:before {
+	/*right: -80px;
+	background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QBoRXhpZgAATU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAAExAAIAAAASAAAATgAAAAAAAABgAAAAAQAAAGAAAAABUGFpbnQuTkVUIHYzLjUuMTAA/9sAQwAHBQUGBQQHBgUGCAcHCAoRCwoJCQoVDxAMERgVGhkYFRgXGx4nIRsdJR0XGCIuIiUoKSssKxogLzMvKjInKisq/9sAQwEHCAgKCQoUCwsUKhwYHCoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq/8AAEQgAMgAyAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A8wre0/w55qLLqM62ysMrEWAdh+PSl8M6fFLMbu5K7YziNT3b1/CqniRLq98UA2SlhHGobnA55FdbajHmZwxTnLlRtm78NabDGhs/tEwchmVfMGD0znvn0pqahoN3fCH+z0RcHcWiKY4745/KuUVtTtdSFtJCvmxHmN+317Gp5dTthGZXUSXPJJVsh1PUH1rP2rZt7GKOi1LwxHIv2jRg20jPks4b64b+h/OuZZWRyrqVZTggjBBrZ0PWftFwkA8xImTpu7gVJr1kpX7UhzJ0cZ5I9a0umtDJxcWYVFFFBJ1WlKkOmQASYyoYjZnk81aukuLHTP7YFtDeW6zJEFmyu4555H8PQemaz9NmR9PhO45C7T+HFa1rrk9iwSZ3vLJU+WyaVUCsDncMjJI64H41riYRVHmS7E4KbliOWT7nPePtPvbm8j1trWSyF3GpkgkYEbl4BBHTjHBrn49GkfRLnUpn2tBgtFj76k4GD/e749K63xb4gtdTtp4LeRismGVyOmDnpWBq2pXd74ZsdPjG2GCTdHDEnzSN/ebHLH+VeXBuyR7E4wu35EXhKKObVCRnMKMwY+hwAPz5rrJ7bzYXTfu3Ag5yKwfC+nNZvcPPJHvdQDGnJjOehPTPsOlb0zLFA8m/hVJ/SvXo0oundnhV6slU5UcjRRRXPY3Luk3giYwSHCscqfetfULXOlR3TXIhZ2ZYfLILHHDkjsO3PJPSuXqeC5aPzd5ZjIQdxOcEDFa+0fJyEKmvac5myyQWJlRZnkkTHytjoeuPepLaa9vi4ib7LbOMyFG5KjtnrVMabPd30gcrCjMSZGPQf1NbF0i29pHBAUlbABVT8pPqSOwrljDW53c+lrl/RWxvymyDAWPjsPSpdVnVF8iNsk8tz0HpVFLloowEYvJjBkIwB7AdhUGSxJJyT1JrpU2o8py1IwlJS6hRS0VAiKiiikUKKUUUUxC0ooooAKKKKQH/2Q==);*/
+}
+/*我的对话框角*/
+
+.chat-thread li.me:after {
+	margin-top: 5px;
+	border-top: 10px solid #2ecc71;
+	border-right: 15px solid transparent;
+	right: -13px;
+	/*-webkit-box-shadow: 3px 3px 3px #aaaaaa;
+	-moz-box-shadow: 3px 3px 3px #aaaaaa;
+	box-shadow: 3px -3px 3px #aaaaaa;*/
+}
+.chat-thread li.you {
+	float: left;
+	margin-left: 60px;
+	margin-right: 20px;
+	color: #ffffff;
+	/*你的字体颜色*/
+}
+.chat-thread li.you:before {
+	background-size: contain;
+	background-image: url(../cat_0.png);
+}
+/*你的对话框角*/
+
+.chat-thread li.you:after {
+	margin-top: 5px;
+	border-top: 10px solid #4486f0;
+	border-left: 15px solid transparent;
+	left: -13px;
+}
+/* Small screens */
+
+@media all and (max-width: 800px) {
+	.chat-thread {
+		width: 100%;
+		height: 260px;
+	}
+}
+/* Medium and large screens */
+
+@media all and (min-width: 800px) {
+	.chat-thread {
+		width: 60%;
+		height: 320px;
+	}
+}
+/*内容布局*/
+
+#contentDiv {
+	margin-top: 10px;
+	width: auto;
+	height: auto;
+}
+#chatContentFootDiv {
+	background: transparent;
+	width: 100%;
+	float: right;
+}
+#floatdiv {
+	position: fixed;
+	z-index: 103;
+}
+#cloudDiv {
+	width: 138%;
+	height: auto;
+	margin: 0 0;
+	padding-top: 100px;
+	margin-left: -100px;
+	margin-right: -100px;
+	background: transparent;
+	z-index: -1;
+	position: fixed;
+	top: 0;
+}
+.cloudImg {
+	margin-top: 10px;
+}
+/* SUNNY */
+
+#sunny {
+	-webkit-animation: sunny 15s linear infinite;
+	animation: sunny 15s linear infinite;
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+	background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+	height: 100px;
+	width: 20px;
+	margin-right: 0px;
+	position: fixed;
+	right: 10px;
+	top: -30px;
+	z-index: 103;
+}
+#sunny:before {
+	/*shizi */
+	
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+	background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+	content: '';
+	height: 100px;
+	width: 20px;
+	opacity: 1;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+#sunny:after {
+	/*中间黄*/
+	
+	background: #FFEE44;
+	border-radius: 50%;
+	box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 15px;
+	content: '';
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	left: -20px;
+	top: 20px;
+}
+@-webkit-keyframes sunny {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes sunny {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
